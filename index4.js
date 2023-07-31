@@ -8,12 +8,14 @@ app.get("/", (req, res)=>{
     res.send("Holla")
 })
 
-app.use((req, res, next)=>{
-   console.log("cs active ", req.method)
+function logtype(req, res, next){
+    console.log("cs active ", req.method)
+    console.log(req.url)
      
-    next()    
+    next()
 }
-)
+
+app.use(logtype)
 
 app.listen(port, ()=>{
     console.log("listening to port "+ port)
