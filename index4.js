@@ -8,11 +8,14 @@ app.get("/", (req, res)=>{
     res.send("Holla")
 })
 
+app.use((req, res, next)=>{
+   console.log("cs active ", req.method)
+     
+    next()    
+}
+)
+
 app.listen(port, ()=>{
     console.log("listening to port "+ port)
 })
 
-app.use((req, res, next)=>{
-    console.log("Request method"), req.method
-    req.url
-})
